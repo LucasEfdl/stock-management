@@ -9,7 +9,7 @@ import CreateItem from "../src/pages/CreateItem"
 import ShowItem from "../src/pages/ShowItem"
 import UpdateItem from "../src/pages/UpdateItem"
 
-export const router = createBrowserRouter(
+const router = createBrowserRouter(
     [
         {
             path:"/",
@@ -28,4 +28,7 @@ export const router = createBrowserRouter(
                 }
             ]
         }
-    ])
+    ]
+)
+
+export default router
