@@ -22,7 +22,7 @@
 
 a {
     font-weight: 400;
-    color: #646cff;
+    color: #cbcbcc;
     text-decoration: inherit;
 }
 
@@ -70,4 +70,18 @@ button:focus-visible {
     button {
         background-color: #f9f9f9;
     }
+}
+.nav-bar {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #bbbaba;
+}
+.links {
+    padding-right: 2rem;
+    padding-bottom: 0.5rem;
+}
+.active {
+    color: #ffffff;
+    border-bottom: 3px solid #fff;
 }
