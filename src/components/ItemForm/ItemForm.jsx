@@ -1,5 +1,7 @@
+import { useState } from "react"
 import styles from "./styles.module.css"
 
+import PropTypes from "prop-types"
 
 const CATEGORIES = [
     "Jogos",
@@ -10,9 +12,39 @@ const CATEGORIES = [
     "brinquedos"
 ]
 
-export default function ItemForm() {
+ItemForm.propTypes = {
+    itemToUpdate: PropTypes.object
+}
+
+
+export default function ItemForm({ itemToUpdate }) {
+
+    const defaultItem = {
+        name: '',
+        description: '',
+        price: 0,
+        quantity: 0,
+        category: ''
+    }
+
+    const [item, setItem] = useState( itemToUpdate ? itemToUpdate : defaultItem)
+
+    const handleChange = (ev) => {
+        setItem(currentItem => {
+            return {
+                ...currentItem,
+                [ev.target.name]: ev.target.value
+            }
+        })
+    }
+
+    const handleSubmit = (ev) => {
+        ev.preventDefault()
+        console.log(item);
+    }
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className={styles.row}>
             <div>
                 <label htmlFor="name">Nome</label>
@@ -21,6 +53,9 @@ export default function ItemForm() {
                     type="text"
                     name="name"
                     id="name"
+                    autoComplete="off"
+                    value={item.name}
+                    onChange={handleChange}
                 />
             </div>
             <div>
@@ -28,9 +63,12 @@ export default function ItemForm() {
                 <input 
                     required
                     type="number"
-                    name="number"
+                    name="quantity"
+                    id="quantity"
                     min={0}
-                    step={1} 
+                    step={1}
+                    value={item.quantity}
+                    onChange={handleChange}
                 />
             </div>
             <div>
@@ -38,9 +76,12 @@ export default function ItemForm() {
                 <input 
                     required
                     type="number"
-                    name="number"
+                    name="price"
+                    id="price"
                     min={0.01}
-                    step={0.01} 
+                    step={0.01}
+                    value={item.price}
+                    onChange={handleChange}
                 />
             </div>
             <div>
@@ -49,6 +90,8 @@ export default function ItemForm() {
                     required 
                     name="category" 
                     id="category"
+                    value={item.category}
+                    onChange={handleChange}
                 >
                     {CATEGORIES.map(category => (
                         <option
@@ -69,6 +112,8 @@ export default function ItemForm() {
                     rows={6} 
                     cols={100}
                     required 
+                    value={item.description}
+                    onChange={handleChange}
                 ></textarea>
             </div>
             <button className="is-primary">
