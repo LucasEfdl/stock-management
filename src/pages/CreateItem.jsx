@@ -1,5 +1,10 @@
 export default function CreateItem() {
     return (
-        <h2>Criar um novo item</h2>
+        <div className="row">
+            <div>
+                <label htmlFor="name">Nome:</label>
+                <input type="text" id="name"/>
+            </div>
+        </div>
     )
 }
