@@ -74,6 +74,7 @@ button:focus-visible {
 .nav-bar {
     display: flex;
     width: 100%;
+    padding: 0 1rem;
     margin-bottom: 1rem;
     border-bottom: 2px solid #bbbaba;
 }

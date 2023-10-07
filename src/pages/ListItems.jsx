@@ -1,5 +1,7 @@
+import ItemTable from "../components/ItemTable/ItemTable";
+
 export default function ListItems() {
     return (
-        <h2>Lista de Items</h2>
+        <ItemTable />
     )
 }
