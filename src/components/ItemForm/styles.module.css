@@ -1,0 +1,16 @@
+.row{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.row div {
+    display: flex;
+    flex-direction: column;
+    padding-right: 1.5rem;
+}
+.formDescription {
+    width: fit-content;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
