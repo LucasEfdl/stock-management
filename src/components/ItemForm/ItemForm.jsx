@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import styles from "./styles.module.css"
 
 import PropTypes from "prop-types"
@@ -20,10 +20,11 @@ export default function ItemForm({ itemToUpdate }) {
         category: ''
     }
 
-    const [item, setItem] = useState( itemToUpdate ? itemToUpdate : defaultItem)
-    
+    const [item, setItem] = useState(itemToUpdate ? itemToUpdate : defaultItem)
+    const inputRef = useRef(null)
+
     const { addItem } = UseStock()
-    
+
 
 
     const handleChange = (ev) => {
@@ -39,12 +40,15 @@ export default function ItemForm({ itemToUpdate }) {
         ev.preventDefault()
 
         try {
+
             const validItem = new StockItem(item)
             addItem(validItem)
             setItem(defaultItem)
-            
+            alert("Novo item cadastrado com sucesso")
+            inputRef.current.focus()
+
         } catch (err) {
-            alert("Ops... Algo deu errado =(")    
+            alert("Ops... Algo deu errado =(")
         }
 
     }
@@ -52,72 +56,73 @@ export default function ItemForm({ itemToUpdate }) {
     return (
         <form onSubmit={handleSubmit}>
             <div className={styles.row}>
-            <div>
-                <label htmlFor="name">Nome</label>
-                <input 
-                    required
-                    type="text"
-                    name="name"
-                    id="name"
-                    autoComplete="off"
-                    value={item.name}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="quantity">Quantidade</label>
-                <input 
-                    required
-                    type="number"
-                    name="quantity"
-                    id="quantity"
-                    min={0}
-                    step={1}
-                    value={item.quantity}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="price">Preço</label>
-                <input 
-                    required
-                    type="number"
-                    name="price"
-                    id="price"
-                    min={0.01}
-                    step={0.01}
-                    value={item.price}
-                    onChange={handleChange}
-                />
-            </div>
-            <div>
-                <label htmlFor="category">Categorias</label>
-                <select
-                    required 
-                    name="category" 
-                    id="category"
-                    value={item.category}
-                    onChange={handleChange}
-                >
-                    {CATEGORIES.map(category => (
-                        <option
-                            key={category}
-                            value={category} 
-                        >
-                            {category}
-                        </option>
-                    ))}
-                </select>
-            </div>
+                <div>
+                    <label htmlFor="name">Nome</label>
+                    <input
+                        required
+                        type="text"
+                        name="name"
+                        id="name"
+                        ref={inputRef}
+                        autoComplete="off"
+                        value={item.name}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="quantity">Quantidade</label>
+                    <input
+                        required
+                        type="number"
+                        name="quantity"
+                        id="quantity"
+                        min={0}
+                        step={1}
+                        value={item.quantity}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="price">Preço</label>
+                    <input
+                        required
+                        type="number"
+                        name="price"
+                        id="price"
+                        min={0.01}
+                        step={0.01}
+                        value={item.price}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="category">Categorias</label>
+                    <select
+                        required
+                        name="category"
+                        id="category"
+                        value={item.category}
+                        onChange={handleChange}
+                    >
+                        {CATEGORIES.map(category => (
+                            <option
+                                key={category}
+                                value={category}
+                            >
+                                {category}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
             <div className={styles.formDescription}>
                 <label htmlFor="description">Descrição</label>
-                <textarea 
-                    name="description" 
+                <textarea
+                    name="description"
                     id="description"
-                    rows={6} 
+                    rows={6}
                     cols={100}
-                    required 
+                    required
                     value={item.description}
                     onChange={handleChange}
                 ></textarea>

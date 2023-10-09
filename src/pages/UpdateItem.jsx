@@ -1,5 +1,13 @@
-export default function UpdateItem() {
+import PropTypes from "prop-types"
+import ItemForm from "../components/ItemForm/ItemForm"
+
+UpdateItem.propTypes = {
+    ItemToUpdate: PropTypes.object
+}
+
+
+export default function UpdateItem({ ItemToUpdate }) {
     return (
-        <h2>Atualizar Item Items</h2>
+        <ItemForm ItemToUpdate={ItemToUpdate} />
     )
 }
