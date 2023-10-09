@@ -2,6 +2,7 @@ import { useState } from "react"
 import styles from "./styles.module.css"
 
 import PropTypes from "prop-types"
+import UseStock from "../../hooks/useStock"
 
 const CATEGORIES = [
     "Jogos",
@@ -28,6 +29,10 @@ export default function ItemForm({ itemToUpdate }) {
     }
 
     const [item, setItem] = useState( itemToUpdate ? itemToUpdate : defaultItem)
+    
+    const { addItem } = UseStock()
+    
+
 
     const handleChange = (ev) => {
         setItem(currentItem => {
@@ -40,7 +45,8 @@ export default function ItemForm({ itemToUpdate }) {
 
     const handleSubmit = (ev) => {
         ev.preventDefault()
-        console.log(item);
+        addItem(item)
+        setItem(defaultItem)
     }
 
     return (
