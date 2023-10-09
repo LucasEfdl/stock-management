@@ -3,15 +3,7 @@ import styles from "./styles.module.css"
 
 import PropTypes from "prop-types"
 import UseStock from "../../hooks/useStock"
-
-const CATEGORIES = [
-    "Jogos",
-    "Mobilha",
-    "Eletronicos",
-    "Acessórios",
-    "Livros",
-    "brinquedos"
-]
+import StockItem, { CATEGORIES } from "../../entities/StockItem"
 
 ItemForm.propTypes = {
     itemToUpdate: PropTypes.object
@@ -45,8 +37,16 @@ export default function ItemForm({ itemToUpdate }) {
 
     const handleSubmit = (ev) => {
         ev.preventDefault()
-        addItem(item)
-        setItem(defaultItem)
+
+        try {
+            const validItem = new StockItem(item)
+            addItem(validItem)
+            setItem(defaultItem)
+            
+        } catch (err) {
+            alert("Ops... Algo deu errado =(")    
+        }
+
     }
 
     return (
