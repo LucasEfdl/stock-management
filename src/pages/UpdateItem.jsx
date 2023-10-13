@@ -1,13 +1,17 @@
-import PropTypes from "prop-types"
+import { useParams } from "react-router-dom";
 import ItemForm from "../components/ItemForm/ItemForm"
-
-UpdateItem.propTypes = {
-    ItemToUpdate: PropTypes.object
-}
+import UseStock from "../hooks/useStock"
 
 
-export default function UpdateItem({ ItemToUpdate }) {
+
+export default function UpdateItem() {
+
+    const {getItem} = UseStock();
+    const {id} = useParams()
+
+    const ItemToUpdate = getItem(id)
+
     return (
-        <ItemForm ItemToUpdate={ItemToUpdate} />
+        <ItemForm itemToUpdate={ItemToUpdate} />
     )
 }

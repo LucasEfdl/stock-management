@@ -23,7 +23,7 @@ export default function ItemForm({ itemToUpdate }) {
     const [item, setItem] = useState(itemToUpdate ? itemToUpdate : defaultItem)
     const inputRef = useRef(null)
 
-    const { addItem } = UseStock()
+    const { addItem, updateItem } = UseStock()
 
 
 
@@ -40,15 +40,21 @@ export default function ItemForm({ itemToUpdate }) {
         ev.preventDefault()
 
         try {
+            if(itemToUpdate) {
+                updateItem(itemToUpdate)
+                setItem(defaultItem)
+                alert("Novo item cadastrado com sucesso")
+            }
 
             const validItem = new StockItem(item)
             addItem(validItem)
             setItem(defaultItem)
             alert("Novo item cadastrado com sucesso")
-            inputRef.current.focus()
 
         } catch (err) {
             alert("Ops... Algo deu errado =(")
+        } finally {
+            inputRef.current.focus()
         }
 
     }
