@@ -1,5 +1,6 @@
 import PropTypes from "prop-types"
 import UseStock from "../../hooks/useStock"
+import styles from "./styles.module.css"
 
 DeleteButton.propTypes = {
     itemName: PropTypes.string,
@@ -18,6 +19,7 @@ export default function DeleteButton({ itemName, id }) {
 
     return (
         <button
+            className={styles.wrapper}
             onClick={handleDelete}
         >
             Excluir
