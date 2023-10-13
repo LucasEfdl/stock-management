@@ -10,6 +10,7 @@ export const stockContext = createContext({})
 
 
 export function StockContextProvider({ children }) {
+
     const [items, setItems] = useState(() => {
         const storedItems = localStorage.getItem("stored-items")
         if (!storedItems) return []
@@ -30,11 +31,19 @@ export function StockContextProvider({ children }) {
         })
     }
 
+    const deleteItem = (id) => {
+        setItems(currentState => {
+            const updateditems = currentState.filter(item => item.id != id)
+            localStorage.setItem("stored-items", JSON.stringify(updateditems))
+            return updateditems
+        })
+    } 
+
     const stock = {
         items,
-        addItem
+        addItem,
+        deleteItem
     }
-
 
     return (
         <stockContext.Provider value={stock}>
