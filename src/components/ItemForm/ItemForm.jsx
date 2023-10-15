@@ -41,18 +41,18 @@ export default function ItemForm({ itemToUpdate }) {
 
         try {
             if(itemToUpdate) {
-                updateItem(itemToUpdate)
+                updateItem(itemToUpdate.id, item)
+                alert("Item atualizado com sucesso!")
+            } else {
+                const validItem = new StockItem(item)
+                addItem(validItem)
                 setItem(defaultItem)
                 alert("Novo item cadastrado com sucesso")
+
             }
-
-            const validItem = new StockItem(item)
-            addItem(validItem)
-            setItem(defaultItem)
-            alert("Novo item cadastrado com sucesso")
-
         } catch (err) {
             alert("Ops... Algo deu errado =(")
+
         } finally {
             inputRef.current.focus()
         }
