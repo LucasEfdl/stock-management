@@ -22,7 +22,7 @@ export default function DeleteButton({ itemName, id }) {
 
     return (
         <button
-            className={styles.wrapper}
+            className="btn btn-delete"
             onClick={handleDelete}
         >
             Excluir

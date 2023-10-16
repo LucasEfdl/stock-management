@@ -2,6 +2,8 @@ import ItemForm from "../components/ItemForm/ItemForm";
 
 export default function CreateItem() {
     return (
-        <ItemForm />
+        <section className="container">
+            <ItemForm />
+        </section>
     )
 }

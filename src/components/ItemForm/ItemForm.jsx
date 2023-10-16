@@ -1,5 +1,4 @@
 import { useRef, useState } from "react"
-import styles from "./styles.module.css"
 
 import PropTypes from "prop-types"
 import UseStock from "../../hooks/useStock"
@@ -61,8 +60,8 @@ export default function ItemForm({ itemToUpdate }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className={styles.row}>
-                <div>
+            <div className="aligned-row">
+                <div className="input-area">
                     <label htmlFor="name">Nome</label>
                     <input
                         required
@@ -75,7 +74,7 @@ export default function ItemForm({ itemToUpdate }) {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="input-area">
                     <label htmlFor="quantity">Quantidade</label>
                     <input
                         required
@@ -88,7 +87,7 @@ export default function ItemForm({ itemToUpdate }) {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="input-area">
                     <label htmlFor="price">Preço</label>
                     <input
                         required
@@ -101,7 +100,7 @@ export default function ItemForm({ itemToUpdate }) {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="input-area">
                     <label htmlFor="category">Categorias</label>
                     <select
                         required
@@ -121,7 +120,7 @@ export default function ItemForm({ itemToUpdate }) {
                     </select>
                 </div>
             </div>
-            <div className={styles.formDescription}>
+            <div className="description-area">
                 <label htmlFor="description">Descrição</label>
                 <textarea
                     name="description"

@@ -7,10 +7,10 @@ export default function RootLayout() {
             <Header />
             <main>
                 <Outlet />
+                <footer>
+                    <h2>Developer by <a href="https://github.com/LucasEfdl" target="blank">LucasEfdl</a></h2>
+                </footer>
             </main>
-            <footer>
-                <h2>Developer by <a href="https://github.com/LucasEfdl" target="blank">LucasEfdl</a></h2>
-            </footer>
         </div>
     )
 }

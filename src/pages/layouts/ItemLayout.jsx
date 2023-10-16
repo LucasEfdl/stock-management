@@ -19,9 +19,7 @@ export default function Itemlayout() {
                     Add item
                 </Link>
             </nav>
-            <section>
-                <Outlet />
-            </section>
+            <Outlet />
         </div>
     )
 }

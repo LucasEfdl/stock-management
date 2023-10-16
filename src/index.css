@@ -106,9 +106,123 @@ textarea {
     background-color: #1c1a1d;
     border: none;
 }
+form{
+    width: 80%;
+}
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+main{
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+table {
+    max-height: 300px;
+    width: 100%;
+    border-spacing: 0;
+}
+thead {
+    background-color: #1c1a1d;
+    width: 100%;
+}
+tr{
+    margin: 2rem;
+}
+th{
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    text-align: start;
+}
+td {
+    padding: 0.7rem 1rem;
+}
 .is-primary {
     margin-top: 1rem;
     font-weight: 400;
     color: #000;
     background-color: #5ba7fd;
+}
+.row{
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.aligned-row {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+.input-area{
+    display: flex;
+    flex-direction: column;
+}
+.description-area {
+    width: 100%;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    padding: .3rem .7rem;
+    text-align: center;
+    color: #000;
+    border-radius: 10px;
+    margin-right: .5rem;
+    border: 2px solid transparent;
+    transition: .3s;
+}
+.btn-show {
+    background-color: #5ba7fd;
+}
+.btn-show:hover{
+    background-color: #93bff2;
+}
+.btn-update {
+    background-color: #e6e6e6;
+}
+.btn-delete {
+    color: #fff;
+    background-color: #e43939;
+}
+.table-container {
+    width: 80%;
+    max-height: 430px;
+    overflow-y: auto;
+}
+.item-info {
+}
+.item-info > div:first-child {
+    display: flex;
+    align-items: center;
+}
+.item-info > div:first-child h2{
+    margin: .5rem 2rem 1rem 0;
+}
+.row span {
+    padding: 1rem 2rem;
+    margin-right: 2.5rem;
+    color: #fff;
+    border-radius: 10px;
+    background-color: #1c1a1d;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.44);
+}
+.text-description {
+    margin: 2rem 0;
+    color: #fff;
+}
+.date-info {
+    color: #fff;
+}
+.date-info span {
+    margin-right: 2rem;
 }
